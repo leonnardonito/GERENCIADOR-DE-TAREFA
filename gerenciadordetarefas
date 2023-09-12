@@ -1,0 +1,60 @@
+package gerencidordetarefas;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> tarefas = new ArrayList<String>();
+
+        String opcao;
+        do {
+        	// Imprime o menu
+        	System.out.println();
+            System.out.println("GERENCIADOR DE TAREFAS");
+            System.out.println("1 - Adicionar tarefa");
+            System.out.println("2 - Mostrar tarefas");
+            System.out.println("0 - Sair do programa");
+            System.out.println("--------------------");
+            
+            // Solicita uma opção ao usuário
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextLine();
+
+            switch (opcao) {
+                case "1":
+                	// Adiciona uma nova tarefa
+                    System.out.print("Digite a descrição da tarefa: ");
+                    String descricao = scanner.nextLine();
+                    tarefas.add(descricao);
+                    System.out.println("Tarefa adicionada com sucesso!");
+                    break;
+                case "2":
+                    if (tarefas.isEmpty()) {
+                    	// Se não houver tarefas, exibe uma mensagem
+                        System.out.println("Nenhuma tarefa na lista.");
+                    } else {
+                    	// Mostra a lista de tarefas
+                        System.out.println("--------------------");
+                        System.out.println("TAREFAS LISTADAS");
+                        for (int i = 0; i < tarefas.size(); i++) {
+                        	// Exibe cada tarefa com um número associado
+                            System.out.println((1 + i) + " - " + tarefas.get(i));
+                        }
+                        System.out.println("--------------------");
+                    }
+                    break;
+                case "0":
+                	// Sai do programa
+                    System.out.println("Saindo do programa.");
+                    break;
+                default:
+                	// Se a opção não for reconhecida, exibe uma mensagem
+                    System.out.println("Opção inválida. Por favor, escolha uma opção indicada acima.");
+            }
+        } while (!opcao.equals("0"));
+
+        scanner.close();
+    }
+}
